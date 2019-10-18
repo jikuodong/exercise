@@ -48,18 +48,18 @@ public class MinaServerHandler extends IoHandlerAdapter {
     public void messageReceived(IoSession session, Object message) throws Exception {
         String msg = message.toString();
         logger.info("服务端接收到数据为：" + msg);
-        if ("bye".equals(msg)) { // 服务端断开连接的条件
+        // 服务端断开连接的条件
+        if ("exit".equals(msg)) {
             session.closeNow();
         }
         Date date = new Date();
-        session.write(date);
+        session.write("\nDate:"+date+"\n");
     }
 
     @Override
     public void messageSent(IoSession session, Object message) throws Exception {
         logger.info(" 服务端发送消息成功");
     }
-
 
     @Override
     public void inputClosed(IoSession session) throws Exception {

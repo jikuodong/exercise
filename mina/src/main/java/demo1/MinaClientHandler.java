@@ -6,7 +6,7 @@ import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
 /**
- * describe
+ * describe 客户端逻辑处理
  *
  * @author JKD
  * @version 1.0.0

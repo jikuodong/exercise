@@ -51,6 +51,7 @@ public class MinaServer {
             logger.info("服务端启动成功...  端口号为：" + PORT);
         } catch (Exception e) {
             e.printStackTrace();
+            logger.error("服务端启动出错-----" + e);
         }
     }
 }

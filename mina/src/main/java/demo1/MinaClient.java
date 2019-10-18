@@ -42,7 +42,9 @@ public class MinaClient {
                         LineDelimiter.WINDOWS.getValue()
                 )
         ));
-        // 添加业务逻辑处理类, 添加业务处理
+        // 添加自定义过滤器
+        ioConnector.getFilterChain().addFirst("filter", new MyClientFilter());
+        // 添加业务逻辑处理类, 添加业务处理(绑定逻辑处理类)
         ioConnector.setHandler(new MinaClientHandler());
         try {
             // 创建连接
