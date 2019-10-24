@@ -36,10 +36,7 @@ public class MinaServer {
                     new TextLineCodecFactory(
                             Charset.forName("UTF-8"),
                             LineDelimiter.WINDOWS.getValue(),
-                            LineDelimiter.WINDOWS.getValue()
-                            )
-                    )
-            );
+                            LineDelimiter.WINDOWS.getValue())));
             // 设置读取数据的缓冲区大小
             acceptor.getSessionConfig().setReadBufferSize(2048);
             // 读写通道10秒内无操作进入空闲状态
