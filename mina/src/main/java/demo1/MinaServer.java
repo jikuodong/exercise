@@ -37,6 +37,8 @@ public class MinaServer {
                             Charset.forName("UTF-8"),
                             LineDelimiter.WINDOWS.getValue(),
                             LineDelimiter.WINDOWS.getValue())));
+            // 添加自定义过滤器
+            acceptor.getFilterChain().addFirst("filter", new MyServerFilter());
             // 设置读取数据的缓冲区大小
             acceptor.getSessionConfig().setReadBufferSize(2048);
             // 读写通道10秒内无操作进入空闲状态

@@ -53,12 +53,14 @@ public class MinaServerHandler extends IoHandlerAdapter {
             session.closeNow();
         }
         Date date = new Date();
-        session.write("\nDate:"+date+"\n");
+        session.write(date);
     }
 
     @Override
     public void messageSent(IoSession session, Object message) throws Exception {
         logger.info(" 服务端发送消息成功");
+        // 长连接变成短连接
+        session.closeNow();
     }
 
     @Override
