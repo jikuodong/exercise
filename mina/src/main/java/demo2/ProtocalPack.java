@@ -1,4 +1,4 @@
-package deno2;
+package demo2;
 
 /**
  * describe 封装自定义协议数据包
