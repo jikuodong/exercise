@@ -1,6 +1,7 @@
 package com.jikuodong.springboot_mina.mina.service.session;
 
 import com.jikuodong.springboot_mina.mina.service.model.Message;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Observable;
 import java.util.concurrent.ConcurrentHashMap;
@@ -15,6 +16,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Date: 2019/11/8 14:35
  * @Version: 1.0
  */
+@Configuration
 public class DefaultSessionManager extends Observable implements SessionManager {
 
     /**

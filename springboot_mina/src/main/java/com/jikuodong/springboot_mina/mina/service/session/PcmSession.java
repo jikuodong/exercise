@@ -1,5 +1,6 @@
 package com.jikuodong.springboot_mina.mina.service.session;
 
+import com.jikuodong.springboot_mina.mina.service.codec.CustomPack;
 import org.apache.mina.core.session.IoSession;
 
 import java.io.Serializable;
@@ -155,6 +156,13 @@ public class PcmSession implements Serializable {
         public void write(Object msg) {
             if (session != null) {
                 session.write(msg).isWritten();
+            }
+        }
+
+        public void write(Object msg, boolean isRequest) {
+            if (null != session) {
+                byte flag = isRequest ? CustomPack.REQUEST : CustomPack.RESPONSE;
+                CustomPack pack = new CustomPack(flag, (String)msg);
             }
         }
 

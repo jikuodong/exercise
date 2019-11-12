@@ -29,7 +29,7 @@ public class BindHanler implements RequestHandler {
     @Autowired
     private SessionManager sessionManager;
     /**
-     * 通缉处理方法
+     * 逻辑处理方法
      * @param newSession 新的会话
      * @param message 接收的消息
      * @return

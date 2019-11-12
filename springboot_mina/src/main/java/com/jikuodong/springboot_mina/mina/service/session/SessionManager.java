@@ -1,5 +1,7 @@
 package com.jikuodong.springboot_mina.mina.service.session;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @ProjectName: springboot_mina
  * @Package: com.jikuodong.springboot_mina.mina.service.session
@@ -9,6 +11,7 @@ package com.jikuodong.springboot_mina.mina.service.session;
  * @Date: 2019/11/8 14:27
  * @Version: 1.0
  */
+@Component
 public interface SessionManager {
     /**
      * 添加新的session
