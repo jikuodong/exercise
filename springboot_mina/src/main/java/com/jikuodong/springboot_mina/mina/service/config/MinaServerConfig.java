@@ -26,7 +26,6 @@ import java.net.SocketAddress;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Properties;
 
 /**
  * @ProjectName: springboot_mina
@@ -59,8 +58,8 @@ public class MinaServerConfig {
 
     @Bean
     public ServiceHandler serviceHandler(BindHanler bindHanler, PushMessageHandler pushMessageHandler) {
-        handlers.put(Const.AUTHEN, bindHanler);
-        handlers.put(Const.TIME_CHECK, pushMessageHandler);
+        handlers.put("clientBind", bindHanler);
+        handlers.put("clientPush", pushMessageHandler);
         ServiceHandler serviceHandler = new ServiceHandler();
         serviceHandler.setHandlers(handlers);
         return serviceHandler;
@@ -143,7 +142,7 @@ public class MinaServerConfig {
         DefaultIoFilterChainBuilder filterChainBuilder = new DefaultIoFilterChainBuilder();
         Map<String, IoFilter> filters = new LinkedHashMap<>();
         filters.put("mdcInjectionFilter",mdcInjectionFilter);
-        filters.put("loggingFilter",loggingFilter);
+//        filters.put("loggingFilter",loggingFilter);
         filters.put("protocolCodecFilter",protocolCodecFilter);
         filters.put("executorFilter",executorFilter);
         filters.put("keepAliveFilter",keepAliveFilter);

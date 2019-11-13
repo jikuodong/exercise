@@ -39,7 +39,6 @@ public class CustomProtocolDecoder extends CumulativeProtocolDecoder {
             in.mark();
             // 获取总长度
             int length = in.getInt(in.position());
-            System.out.println("in.remaining()============" + in.remaining());
             // 如果可读的长度 小于 总长度 - 包头的长度， 则结束拆包，等待下一次
             if (in.remaining() < (length - PACK_HEAD_LEN)) {
                 in.reset();

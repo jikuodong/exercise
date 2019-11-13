@@ -4,13 +4,18 @@ import com.jikuodong.springboot_mina.mina.service.handler.RequestHandler;
 import com.jikuodong.springboot_mina.mina.service.model.Message;
 import com.jikuodong.springboot_mina.mina.service.model.ReplyBody;
 import com.jikuodong.springboot_mina.mina.service.model.SentBody;
+import com.jikuodong.springboot_mina.mina.service.session.DefaultSessionManager;
 import com.jikuodong.springboot_mina.mina.service.session.PcmSession;
 import com.jikuodong.springboot_mina.mina.service.session.SessionManager;
 import com.jikuodong.springboot_mina.util.UuidUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.tomcat.util.buf.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @ProjectName: springboot_mina
@@ -80,6 +85,15 @@ public class BindHanler implements RequestHandler {
         }
         if (reply.getCode().equals(Message.ReturnCode.CODE_200)) {
             logger.info(">>>>>>>>>>>>>>>>>>>>>>>终端用户：" + message.get(Message.SESSION_KEY) + "绑定成功<<<<<<<<<<<<<<<<<<<<");
+            ConcurrentHashMap<String, PcmSession> map = DefaultSessionManager.getSessions();
+            // 遍历map，封装为list数据
+            Set<Map.Entry<String, PcmSession>> entrySet = map.entrySet();
+            Iterator<Map.Entry<String, PcmSession>> iterator = entrySet.iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String, PcmSession> item =  iterator.next();
+                PcmSession pcmSession = item.getValue();
+                System.out.println(pcmSession.getAccount());
+            }
         } else {
             logger.info(">>>>>>>>>>>>>>>>>>>>>>>终端用户：" + message.get(Message.SESSION_KEY) + "绑定失败<<<<<<<<<<<<<<<<<<<<");
         }

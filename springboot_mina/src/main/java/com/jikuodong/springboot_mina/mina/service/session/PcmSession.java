@@ -163,6 +163,7 @@ public class PcmSession implements Serializable {
             if (null != session) {
                 byte flag = isRequest ? CustomPack.REQUEST : CustomPack.RESPONSE;
                 CustomPack pack = new CustomPack(flag, (String)msg);
+                session.write(pack).isWritten();
             }
         }
 

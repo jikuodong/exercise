@@ -60,7 +60,6 @@ public class ServiceHandler extends IoHandlerAdapter {
         }
         rb.setKey(key);
         pcmSession.write(rb.toJson(), false);
-        super.messageReceived(session, message);
     }
 
     /**
