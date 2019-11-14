@@ -1,0 +1,8 @@
+# 在打包为jar后，可以直接将配置文件放置到jar包的同级目录或config文件夹下（优先读取config文件夹下，然后同级，最后jar包内)
+server:
+    port: 8088 # 运行的端口
+mina:
+    host: 127.0.0.1
+    port: 8090
+    # 推送定时间隔（/分钟）
+    pushDelay: 1
