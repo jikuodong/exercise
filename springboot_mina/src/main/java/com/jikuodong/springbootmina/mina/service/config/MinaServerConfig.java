@@ -6,6 +6,7 @@ import com.jikuodong.springbootmina.mina.service.handler.RequestHandler;
 import com.jikuodong.springbootmina.mina.service.handler.ServiceHandler;
 import com.jikuodong.springbootmina.mina.service.handler.impl.BindHanler;
 import com.jikuodong.springbootmina.mina.service.handler.impl.PushMessageHandler;
+import com.jikuodong.springbootmina.mina.service.handler.impl.SyncInfoHandler;
 import com.jikuodong.springbootmina.util.Const;
 import org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder;
 import org.apache.mina.core.filterchain.IoFilter;
@@ -52,13 +53,17 @@ public class MinaServerConfig {
     }
 
     @Bean
+    public SyncInfoHandler syncInfoHandler() { return new SyncInfoHandler();}
+
+    @Bean
     public PushMessageHandler pushMessageHandler() {
         return new PushMessageHandler();
     }
 
     @Bean
-    public ServiceHandler serviceHandler(BindHanler bindHanler, PushMessageHandler pushMessageHandler) {
+    public ServiceHandler serviceHandler(BindHanler bindHanler, SyncInfoHandler syncInfoHandler, PushMessageHandler pushMessageHandler) {
         handlers.put("clientBind", bindHanler);
+        handlers.put("clientSync", syncInfoHandler);
         handlers.put("clientPush", pushMessageHandler);
         ServiceHandler serviceHandler = new ServiceHandler();
         serviceHandler.setHandlers(handlers);

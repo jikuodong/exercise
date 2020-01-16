@@ -37,9 +37,12 @@ public class MinaClientCustom {
         // 创建一个非阻塞的客户端
         IoConnector connector = new NioSocketConnector();
         // 设置编码过滤器
-        connector.getFilterChain().addLast("mycoder", new ProtocolCodecFilter(new CustomProtocolCodecFactory(Charset.forName("UTF-8"))));
+        connector.getFilterChain().addLast("mycoder",
+                new ProtocolCodecFilter(
+                        new CustomProtocolCodecFactory(
+                                Charset.forName("UTF-8"))));
         // 设置缓冲区大小
-        connector.getSessionConfig().setReadBufferSize(1024);
+        connector.getSessionConfig().setReadBufferSize(102400);
         // 设置空闲时间
         connector.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
         // 绑定逻辑处理Handler
@@ -61,7 +64,7 @@ public class MinaClientCustom {
     public static  void sendData(IoSession session) {
         logger.info("----------------测试数据准备发送-----------------");
         // 模拟发送100次数据
-        for (int i = 0; i < 500; i++) {
+        for (int i = 0; i < 100; i++) {
             String content = "测试数据：" + i;
             CustomPack pack = new CustomPack((byte) i, content);
             session.write(pack);

@@ -36,9 +36,11 @@ public class MinaServerCustom {
             // 创建一个非阻塞的服务端server
             acceptor = new NioSocketAcceptor();
             // 设置编码过滤器（自定义）
-            acceptor.getFilterChain().addLast("mycoder", new ProtocolCodecFilter(new CustomProtocolCodecFactory(Charset.forName("UTF-8"))));
+            acceptor.getFilterChain().addLast("mycoder", new ProtocolCodecFilter(
+                                                new CustomProtocolCodecFactory(
+                                                        Charset.forName("UTF-8"))));
             // 设置缓冲区大小
-            acceptor.getSessionConfig().setReadBufferSize(1024);
+            acceptor.getSessionConfig().setReadBufferSize(102400);
             // 设置读写空闲时间
             acceptor.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
             // 绑定handler

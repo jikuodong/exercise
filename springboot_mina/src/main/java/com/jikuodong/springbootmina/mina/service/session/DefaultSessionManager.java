@@ -25,7 +25,7 @@ public class DefaultSessionManager extends Observable implements SessionManager 
     private static ConcurrentHashMap<String, PcmSession> sessions  = new ConcurrentHashMap<>();
 
     /**
-     * 线程安全ed自增类，用于统计连接数
+     * 线程安全的自增类，用于统计连接数
      */
     private static final AtomicInteger connectionCounter = new AtomicInteger(0);
 
