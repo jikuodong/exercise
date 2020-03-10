@@ -9,7 +9,7 @@ import java.sql.Statement;
  * describe 创建Statement
  *
  * @author JKD
- * @version 1.0.0
+ *  * @version 1.0.0
  * @ClassName TestJDBC2.java
  * @createTime 2019年10月21日 15:09:00
  */
