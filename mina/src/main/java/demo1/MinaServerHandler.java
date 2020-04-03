@@ -67,4 +67,27 @@ public class MinaServerHandler extends IoHandlerAdapter {
     public void inputClosed(IoSession session) throws Exception {
        logger.info("输入关闭");
     }
+
+    // 转化十六进制编码为字符串
+    public static String toStringHex2(String s) {
+        byte[] baKeyword = new byte[s.length() / 2];
+        for (int i = 0; i < baKeyword.length; i++) {
+            try {
+                baKeyword[i] = (byte) (0xff & Integer.parseInt(s.substring(
+                        i * 2, i * 2 + 2), 16));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            s = new String(baKeyword, "utf-8");// UTF-16le:Not
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return s;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(toStringHex2("e983bde698afe59e83e59cbe3132313261616164617368646b617368646b6a6168646a617368646a61"));
+    }
 }

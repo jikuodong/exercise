@@ -28,7 +28,7 @@ public class MinaClientCustom {
     private static final Logger logger = LogManager.getLogger(MinaClientCustom.class);
 
     private static final String MINA_HOST = "127.0.0.1";
-    private static final int MINA_PORT = 7080;
+    private static final int MINA_PORT = 8090;
     private static long start = 0;
 
     public static void main(String[] args) {
