@@ -37,6 +37,7 @@ public class CustomProtocolEncoder implements ProtocolEncoder {
         IoBuffer buffer = IoBuffer.allocate(customPack.getLen()).setAutoExpand(true);
 
         // 设置长度、包头、内容
+        buffer.putInt(customPack.getLen1());
         buffer.putInt(customPack.getLen());
         buffer.put(customPack.getFlag());
         if (customPack.getContent() != null) {

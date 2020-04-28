@@ -32,6 +32,7 @@ public class ProtocalClient {
         start= System.currentTimeMillis();
         IoConnector connector = new NioSocketConnector();
         connector.getFilterChain().addLast("coderc", new ProtocolCodecFilter(new ProtocalFactory(Charset.forName("UTF-8"))));
+//        connector.getFilterChain().addFirst("filter", new MyClientFilter());
         connector.getSessionConfig().setReadBufferSize(1024);
         connector.getSessionConfig().setIdleTime(IdleStatus.BOTH_IDLE, 10);
         connector.setHandler(new MyHandlerClient());
@@ -68,5 +69,10 @@ class MyHandlerClient extends IoHandlerAdapter{
         if (status== IdleStatus.READER_IDLE){
             session.closeNow();
         }
+    }
+
+    @Override
+    public void messageSent(IoSession session, Object message) throws Exception {
+        System.out.println("客户端发送消息："+ message);
     }
 }
