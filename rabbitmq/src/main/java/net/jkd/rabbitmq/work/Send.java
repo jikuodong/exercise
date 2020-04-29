@@ -13,7 +13,7 @@ import java.util.concurrent.TimeoutException;
  * @package: net.jkd.rabbitmq.work
  * @className: Send
  * @author: JKD
- * @description: Éú²úÕßÉú²úÏûÏ¢
+ * @description: ç”Ÿäº§è€…ç”Ÿäº§æ¶ˆæ¯
  * @date: 2020/4/28 17:08
  * @version: 1.0
  */
@@ -28,12 +28,12 @@ public class Send {
 
     private static final String QUEUE_NAME = "test_work_queue";
     public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
-        // »ñÈ¡Á¬½Ó
+        // è·å–è¿æ¥
         Connection connection = ConnectionUtils.getConnection();
-        // »ñÈ¡channel
+        // è·å–channel
         Channel channel = connection.createChannel();
 
-        // ÉùÃ÷¶ÓÁĞ
+        // å£°æ˜é˜Ÿåˆ—
         channel.queueDeclare(QUEUE_NAME,false,false,false, null);
 
         for (int i = 0; i < 50; i++) {

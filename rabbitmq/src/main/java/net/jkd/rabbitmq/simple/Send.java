@@ -12,18 +12,18 @@ import java.util.concurrent.TimeoutException;
  * @package: net.jkd.rabbitmq.simple
  * @className: Send
  * @author: JKD
- * @description: Éú²úÕß
+ * @description: ç”Ÿäº§è€…
  * @date: 2020/4/28 15:52
  * @version: 1.0
  */
 public class Send {
     private static final String QUEUE_NAME = "test_simple_queue";
     public static void main(String[] args) throws IOException, TimeoutException {
-        // »ñÈ¡Ò»¸öÁ¬½Ó
+        // è·å–ä¸€ä¸ªè¿æ¥
         Connection connection = ConnectionUtils.getConnection();
-        // ´ÓÁ¬½ÓÖĞ»ñÈ¡Ò»¸öÍ¨µÀ
+        // ä»è¿æ¥ä¸­è·å–ä¸€ä¸ªé€šé“
         Channel channel = connection.createChannel();
-        // ´´½¨¶ÓÁĞÉùÃ÷
+        // åˆ›å»ºé˜Ÿåˆ—å£°æ˜
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         String msg = "hello simple !";
         channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());

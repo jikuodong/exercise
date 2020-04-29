@@ -11,7 +11,7 @@ import java.util.concurrent.TimeoutException;
  * @package: net.jkd.rabbitmq.util
  * @className: ConnectionUtils
  * @author: JKD
- * @description: »ñÈ¡MQµÄÁ¬½Ó
+ * @description: è·å–MQçš„è¿æ¥
  * @date: 2020/4/28 15:39
  * @version: 1.0
  */
@@ -19,7 +19,7 @@ public class ConnectionUtils {
 
 
     /**
-     * @description »ñÈ¡MQµÄÁ¬½Ó
+     * @description è·å–MQçš„è¿æ¥
      *
      * @method getConnection
      * @author JKD
@@ -28,10 +28,10 @@ public class ConnectionUtils {
      * @date 2020/4/28 15:41
      */
     public static Connection getConnection() throws IOException, TimeoutException {
-        // ¶¨ÒåÒ»¸öÁ¬½Ó¹¤³§
+        // å®šä¹‰ä¸€ä¸ªè¿æ¥å·¥å‚
         ConnectionFactory factory = new ConnectionFactory();
 
-        // ÉèÖÃ·şÎñµØÖ·
+        // è®¾ç½®æœåŠ¡åœ°å€
         factory.setHost("127.0.0.1");
 
         // AMQP
@@ -40,10 +40,10 @@ public class ConnectionUtils {
         // vhost
         factory.setVirtualHost("/");
 
-        // ÓÃ»§Ãû
+        // ç”¨æˆ·å
         factory.setUsername("admin");
 
-        // ÃÜÂë
+        // å¯†ç 
         factory.setPassword("123456");
         return factory.newConnection();
     }

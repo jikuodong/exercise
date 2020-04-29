@@ -11,40 +11,40 @@ import java.util.concurrent.TimeoutException;
  * @package: net.jkd.rabbitmq.simple
  * @className: Recv
  * @author: JKD
- * @description: Ïû·ÑÕß»ñÈ¡ÏûÏ¢
+ * @description: æ¶ˆè´¹è€…è·å–æ¶ˆæ¯
  * @date: 2020/4/28 16:04
  * @version: 1.0
  */
 public class Recv {
     private static final String QUEUE_NAME = "test_simple_queue";
     public static void main(String[] args) throws IOException, TimeoutException {
-        // »ñÈ¡Á¬½Ó
+        // è·å–è¿æ¥
         Connection connection = ConnectionUtils.getConnection();
-        // ´´½¨ÆµµÀ
+        // åˆ›å»ºé¢‘é“
         Channel channel = connection.createChannel();
-        // ¶ÓÁĞÉùÃ÷
+        // é˜Ÿåˆ—å£°æ˜
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        // ¶¨ÒåÏû·ÑÕß
+        // å®šä¹‰æ¶ˆè´¹è€…
         DefaultConsumer consumer = new DefaultConsumer(channel){
-            // »ñÈ¡µ½´ïµÄÏûÏ¢
+            // è·å–åˆ°è¾¾çš„æ¶ˆæ¯
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String msgString = new String(body, "utf-8");
                 System.out.println("new api recv:" + msgString);
             }
         };
-        // ¼àÌı¶ÓÁĞ
+        // ç›‘å¬é˜Ÿåˆ—
         channel.basicConsume(QUEUE_NAME, true, consumer);
     }
 
     private static void oldApi() throws IOException, TimeoutException, InterruptedException {
-        // »ñÈ¡Á¬½Ó
+        // è·å–è¿æ¥
         Connection connection = ConnectionUtils.getConnection();
-        // ´´½¨ÆµµÀ
+        // åˆ›å»ºé¢‘é“
         Channel channel = connection.createChannel();
-        // ¶¨Òå¶ÓÁĞµÄÏû·ÑÕß
+        // å®šä¹‰é˜Ÿåˆ—çš„æ¶ˆè´¹è€…
         QueueingConsumer consumer = new QueueingConsumer(channel);
-        // ¼àÌı¶ÓÁĞ
+        // ç›‘å¬é˜Ÿåˆ—
         channel.basicConsume(QUEUE_NAME, consumer);
         while (true) {
             QueueingConsumer.Delivery delivery = consumer.nextDelivery();

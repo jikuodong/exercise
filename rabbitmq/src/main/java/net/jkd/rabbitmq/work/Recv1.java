@@ -11,22 +11,22 @@ import java.util.concurrent.TimeoutException;
  * @package: net.jkd.rabbitmq.work
  * @className: Recv1
  * @author: JKD
- * @description: Ïû·ÑÕß
+ * @description: æ¶ˆè´¹è€…
  * @date: 2020/4/28 17:16
  * @version: 1.0
  */
 public class Recv1 {
     private static final String QUEUE_NAME = "test_work_queue";
     public static void main(String[] args) throws IOException, TimeoutException {
-        // »ñÈ¡Á¬½Ó
+        // è·å–è¿æ¥
         Connection connection = ConnectionUtils.getConnection();
-        // »ñÈ¡ÆµµÀ
+        // è·å–é¢‘é“
         Channel channel = connection.createChannel();
-        // ÉùÃ÷¶ÓÁĞ
+        // å£°æ˜é˜Ÿåˆ—
         channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-        // ¶¨ÒåÒ»¸öÏû·ÑÕß
+        // å®šä¹‰ä¸€ä¸ªæ¶ˆè´¹è€…
         Consumer consumer = new DefaultConsumer(channel) {
-            // ÏûÏ¢µ½´ï´¥·¢Õâ¸ö·½·¨
+            // æ¶ˆæ¯åˆ°è¾¾è§¦å‘è¿™ä¸ªæ–¹æ³•
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String msg = new String(body, "utf-8");
@@ -43,7 +43,7 @@ public class Recv1 {
             }
         };
         boolean autoAck = true;
-        // ¼àÌı¶ÓÁĞ
+        // ç›‘å¬é˜Ÿåˆ—
         channel.basicConsume(QUEUE_NAME,autoAck, consumer);
     }
 }
