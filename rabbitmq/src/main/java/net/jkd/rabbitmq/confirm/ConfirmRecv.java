@@ -1,10 +1,10 @@
 package net.jkd.rabbitmq.confirm;
 
-import com.rabbitmq.client.*;
-import net.jkd.rabbitmq.util.ConnectionUtils;
+        import com.rabbitmq.client.*;
+        import net.jkd.rabbitmq.util.ConnectionUtils;
 
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
+        import java.io.IOException;
+        import java.util.concurrent.TimeoutException;
 
 /**
  * @projectName: exercise
@@ -16,7 +16,7 @@ import java.util.concurrent.TimeoutException;
  * @version: 1.0
  */
 public class ConfirmRecv {
-    private static final String QUEUE_NAME = "test_queue_confirm1";
+    private static final String QUEUE_NAME = "test_queue_confirm3";
     public static void main(String[] args) throws IOException, TimeoutException {
         Connection connection = ConnectionUtils.getConnection();
         Channel channel = connection.createChannel();
