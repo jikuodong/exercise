@@ -27,9 +27,12 @@ public class TCPTest1 {
         Socket socket = null;
         OutputStream outputStream = null;
         try {
+            // 1. 创建Socket对象，指明服务器端的ip和端口号
             InetAddress inetAddress = InetAddress.getByName("127.0.0.1");
             socket = new Socket(inetAddress, 8899);
+            // 2. 获取一个输出流，用于输出数据
             outputStream = socket.getOutputStream();
+            // 3. 写出数据的操作
             outputStream.write("你好，我是客户端mm".getBytes());
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,8 +61,11 @@ public class TCPTest1 {
         ByteArrayOutputStream baos = null;
         ServerSocket ss = null;
         try {
+            // 1. 创建服务端的ServerSocket，指明自己的端口号
             ss = new ServerSocket(8899);
+            // 2. 调用accept()表示接收来自于客户端的socket
             socket = ss.accept();
+            // 3. 获取输入流
             is = socket.getInputStream();
             // 不建议这样写，有可能乱码
 //      byte[] buffer = new byte[1024];
@@ -68,6 +74,7 @@ public class TCPTest1 {
 //          String str = new String(buffer, 0,len);
 //          System.out.println(str);
 //      }
+            // 4. 读取输入流中的数据
             baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[5];
             int len;
