@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 /**
  * @projectName: java
@@ -71,7 +72,7 @@ public class FileTest {
 
     @Test
     public void test5() {
-        File file = new File("hello.txt");
+        File file = new File("111.txt");
         // 判断是否是文件目录
         System.out.println(file.isDirectory());
         // 判断是否是文件
@@ -84,6 +85,7 @@ public class FileTest {
         System.out.println(file.canWrite());
         // 判断是否隐藏
         System.out.println(file.isHidden());
+        System.out.println(file.length());
 
         System.out.println();
         File file1 = new File("D:\\io");

@@ -24,7 +24,7 @@ public class BufferedTest {
      * 实现非文本文件的复制
      */
     @Test
-    public void BufferedDtreamTest(){
+    public void BufferedDreamTest(){
         FileInputStream fileInputStream = null;
         FileOutputStream fileOutputStream = null;
         BufferedInputStream bis = null;

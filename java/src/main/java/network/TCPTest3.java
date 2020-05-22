@@ -13,7 +13,7 @@ import java.net.Socket;
  * @className: TCPTest2
  * @author: JKD
  * @description: 实现TCP的网络编程
- *  客户端发送文件给客户端，服务端将文件保存在本地,服务端反馈给客户端
+ * 客户端发送文件给客户端，服务端将文件保存在本地,服务端反馈给客户端
  * @date: 2020/5/18 14:30
  * @version: 1.0
  */
@@ -27,7 +27,7 @@ public class TCPTest3 {
         byte[] buffer = new byte[1024];
         int len;
         while ((len = fis.read(buffer)) != -1) {
-            os.write(buffer, 0 ,len);
+            os.write(buffer, 0, len);
         }
         // 关闭数据
         socket.shutdownOutput();
@@ -37,7 +37,7 @@ public class TCPTest3 {
         byte[] buffer1 = new byte[20];
         int len1;
         while ((len1 = is.read(buffer1)) != -1) {
-            bos.write(buffer1, 0,len1);
+            bos.write(buffer1, 0, len1);
 
         }
         System.out.println(bos.toString());
@@ -57,7 +57,7 @@ public class TCPTest3 {
         byte[] buffer = new byte[1024];
         int len;
         while ((len = is.read(buffer)) != -1) {
-            fos.write(buffer, 0 ,len);
+            fos.write(buffer, 0, len);
         }
         // 服务器端给予客户端反馈
         OutputStream os = socket.getOutputStream();
