@@ -16,5 +16,13 @@ public class Test {
         Strategy strategy = Strategy.valueOf("FAST");
         System.out.println(strategy.run());
     }
+    @org.junit.Test
+    public void test2(){
+        EnumSingleton singleton1 = EnumSingleton.getInstance();
+        EnumSingleton singleton2 = EnumSingleton.getInstance();
+        System.out.println(singleton1);
+        System.out.println(singleton2);
+        System.out.println(singleton1==singleton2);
+    }
 
 }
