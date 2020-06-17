@@ -1,5 +1,7 @@
 package enunmtest;
 
+import java.util.List;
+
 /**
  * @projectName: java
  * @package: enunmtest
@@ -10,7 +12,12 @@ package enunmtest;
  * @version: 1.0
  */
 public class Test {
+    //泛型方法
+    //举例：获取表中一共有多少条记录？获取最大的员工入职时间？
+    public <E> E getValue(E e){
 
+        return null;
+    }
     @org.junit.Test
     public void test1(){
         Strategy strategy = Strategy.valueOf("FAST");
@@ -25,4 +32,9 @@ public class Test {
         System.out.println(singleton1==singleton2);
     }
 
+    @org.junit.Test
+    public void test3() {
+        Test test = new Test();
+        Integer value = test.getValue(1);
+    }
 }

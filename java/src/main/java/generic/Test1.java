@@ -34,7 +34,6 @@ public class Test1 {
             String key = next.getKey();
             Integer value = next.getValue();
             System.out.println(key+"------" + value);
-
         }
     }
 }
