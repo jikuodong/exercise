@@ -13,6 +13,17 @@ import org.junit.Test;
  */
 public class WrapperTest {
 
+    @Test
+    public void test3() {
+        // 自动装箱
+        int num2 = 10;
+        Integer in1 = num2;
+
+        // 自动拆箱
+        int num3 = in1;
+    }
+
+
     // 基本数据类型-----> 包装类：调用包装类的构造器
     @Test
     public  void test1() {
