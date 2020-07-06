@@ -1,5 +1,9 @@
 package oop.day08;
 
+import com.sun.org.apache.xpath.internal.operations.String;
+
+import java.util.Arrays;
+
 /**
  * 类中属性的使用
  *
@@ -43,4 +47,18 @@ package oop.day08;
  *
  */
 public class UserTest {
+    public static void main(String[] args) {
+        UserTest test = new UserTest();
+        System.out.println(test.f(2));
+    }
+
+    public int f( int n) {
+        if (n == 0) {
+            return 1;
+        } else if (n == 1) {
+            return 4;
+        }else {
+            return 2*f(n-1) + f(n-2);
+        }
+    }
 }
