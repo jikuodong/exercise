@@ -11,11 +11,11 @@ package enunmtest;
  */
 public class EnumSingleton {
 
-    public static EnumSingleton getInstance(){
+    public static EnumSingleton getInstance() {
         return Enum.INSTANCE.getSingleton();
     }
 
-    private enum Enum{
+    private enum Enum {
         /**
          * 实例
          */
@@ -28,7 +28,8 @@ public class EnumSingleton {
         Enum() {
             singleton = new EnumSingleton();
         }
-        private EnumSingleton getSingleton(){
+
+        private EnumSingleton getSingleton() {
             return singleton;
         }
     }
