@@ -15,6 +15,8 @@ package day02;
  *              要求： 多个线程必须要用同一把锁。
  *
  * 方式二：同步方法
+ *    如果操作共享数据的代码完整的声明在一个方法中，我们不妨将此方法声明为同步的。
+ *
  *
  * 同步的方式，解决了线程的安全问题。----好处
  *   操作同步代码时，只能有一个线程参与，其他线程等待。相当于是一个单线程的过程，效率低。 -----------坏处
@@ -29,7 +31,8 @@ class Window1 implements Runnable{
     @Override
     public void run() {
         while (true) {
-            synchronized (obj) {
+            synchronized (this) {
+//            synchronized (obj) {
                 if (ticket > 0) {
                     try {
                         Thread.sleep(100);
