@@ -19,7 +19,25 @@ package day02.exer;
  */
 
 class Account{
+    private double balance;
 
+    public Account(double balance) {
+        this.balance = balance;
+    }
+    /**
+     * description 存钱
+     */
+    public synchronized void deposit(double amt) {
+        if (amt > 0) {
+            balance += amt;
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(Thread.currentThread().getName() + ":存钱成功。余额为：" + balance);
+        }
+    }
 }
 
 class Customer extends Thread{
@@ -29,14 +47,24 @@ class Customer extends Thread{
         this.account = account;
     }
 
+    @Override
+    public void run() {
+        for (int i = 0; i < 3; i++) {
+            account.deposit(1000);
+        }
+    }
 }
 
 public class AccountTest {
     public static void main(String[] args) {
-        Account account = new Account();
+        Account account = new Account(0);
         Customer c1 = new Customer(account);
         Customer c2 = new Customer(account);
 
         c1.setName("储户1");
+        c2.setName("储户2");
+
+        c1.start();
+        c2.start();
     }
 }
