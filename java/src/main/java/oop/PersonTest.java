@@ -38,7 +38,6 @@ class Person {
     String name;
     int age;
     boolean isMale;
-
     // 方法
     public void eat() {
         System.out.println("人可以吃饭");
