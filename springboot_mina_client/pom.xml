@@ -17,7 +17,7 @@
     <properties>
         <java.version>1.8</java.version>
         <!-- mina版本 -->
-        <mina.version>2.0.19</mina.version>
+        <mina.version>2.1.5</mina.version>
     </properties>
 
     <dependencies>
